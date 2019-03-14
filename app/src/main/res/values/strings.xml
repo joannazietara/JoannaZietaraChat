@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Joanna Zietara Chat</string>
+	<string name="splash_title">Chat</string>
+	<string name="splash_author">Joanna Ziętara</string>
 </resources>
