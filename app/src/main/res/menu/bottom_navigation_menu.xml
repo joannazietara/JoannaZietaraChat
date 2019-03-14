@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<item android:id="@+id/new_game"
-		android:icon="@drawable/ic_girl_splash_screen"
+	<item android:id="@+id/navigation_rooms"
+		android:icon="@drawable/ic_navigation_rooms"
 		android:title="@string/main_navigation_rooms"/>
-	<item android:id="@+id/help"
-		android:icon="@drawable/ic_girl_splash_screen"
-		android:title="@string/main_navigation_where_find" />
+	<item android:id="@+id/navigation_where"
+		android:icon="@drawable/ic_navigation_where"
+		android:title="@string/main_navigation_where" />
+	<item android:id="@+id/navigation_other"
+		android:icon="@drawable/ic_navigation_other"
+		android:title="@string/main_navigation_other" />
 </menu>

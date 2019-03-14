@@ -3,5 +3,6 @@
 	<string name="splash_title">Chat</string>
 	<string name="splash_author">Joanna Ziętara</string>
 	<string name="main_navigation_rooms">Sale</string>
-	<string name="main_navigation_where_find">Gdzie znajdę?</string>
+	<string name="main_navigation_where">Gdzie znajdę?</string>
+	<string name="main_navigation_other">Inne</string>
 </resources>
