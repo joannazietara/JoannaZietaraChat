@@ -5,4 +5,5 @@
 	<string name="main_navigation_rooms">Sale</string>
 	<string name="main_navigation_where">Gdzie znajdę?</string>
 	<string name="main_navigation_other">Inne</string>
+    <string name="navigation_question_hint">Wpisz pytanie...</string>
 </resources>
