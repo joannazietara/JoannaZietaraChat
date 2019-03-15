@@ -1,9 +1,11 @@
-package com.joannazietara.chat
+package com.joannazietara.chat.features.splash
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.joannazietara.chat.R
+import com.joannazietara.chat.features.main.MainActivity
 
 class SplashScreenActivity: AppCompatActivity() {
 
