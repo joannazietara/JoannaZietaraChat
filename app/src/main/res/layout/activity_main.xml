@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+        android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -34,7 +34,7 @@
         android:paddingTop="6dp"
         android:paddingEnd="6dp"
         android:paddingBottom="6dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -57,6 +57,7 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/user_question_background"
         android:text="Czy można parkować na uczelni?"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,6 +75,7 @@
         android:text="Można parkować samochodem na podwórku, jednak pamiętaj, że wykładowcy mają
 pierwszeństwo – jeżeli dużo wykładowców ma w danym dniu zajęcia może nie być
 dla Ciebie miejsca."
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +90,7 @@ dla Ciebie miejsca."
         app:layout_constraintGuide_percent="0.5" />
 
     <ImageView
-        android:id="@+id/tvNoConversationImage"
+        android:id="@+id/ivNoConversationImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
