@@ -7,13 +7,17 @@ import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.joannazietara.chat.R
 import kotlinx.android.synthetic.main.activity_main.*
-
+import androidx.lifecycle.ViewModelProviders
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bottomNavigation.setOnNavigationItemSelectedListener(this)
+
+        val mainViewMutableList = ViewModelProviders.of(this).get(MainViewModel::class.java)
+
+        bottomNavigation.selectedItemId
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
