@@ -3,37 +3,57 @@ package com.joannazietara.chat.features.main
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.joannazietara.chat.R
 import com.joannazietara.chat.model.ChatMessage
 
-class MessagesAdapter(private val messages: List<ChatMessage>): RecyclerView.Adapter<ViewHolder>() {
+class MessagesAdapter(private val messages: List<ChatMessage>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         return messages[position].author
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = if(viewType == ChatMessage.USER)
-            LayoutInflater.from(parent.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if(viewType == ChatMessage.USER) {
+            val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.message_user, parent, false)
-        else
-            LayoutInflater.from(parent.context)
+            UserMessageViewHolder(view)
+        } else {
+            val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.message_bot, parent, false)
-
-        return ViewHolder(view)
+            BotMessageViewHolder(view)
+        }
     }
 
     override fun getItemCount(): Int {
         return messages.size
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvMessage.text = messages[position].message
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if(getItemViewType(position) == ChatMessage.USER) {
+            val viewHolder: UserMessageViewHolder = holder as UserMessageViewHolder
+            viewHolder.tvMessage.text = messages[position].message
+        } else {
+            val viewHolder: BotMessageViewHolder = holder as BotMessageViewHolder
+            if (messages[position].message.contains("/drawable")) {
+                viewHolder.ivChatImage.visibility = View.VISIBLE
+                viewHolder.tvMessage.visibility = View.GONE
+            } else {
+                viewHolder.ivChatImage.visibility = View.GONE
+                viewHolder.tvMessage.visibility = View.VISIBLE
+                holder.tvMessage.text = messages[position].message
+            }
+        }
     }
 }
 
-class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+class UserMessageViewHolder(view: View): RecyclerView.ViewHolder(view) {
     var tvMessage: TextView = view.findViewById(R.id.tvChatMessage)
+}
+
+class BotMessageViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    var tvMessage: TextView = view.findViewById(R.id.tvChatMessage)
+    var ivChatImage: ImageView = view.findViewById(R.id.ivChatImage)
 }

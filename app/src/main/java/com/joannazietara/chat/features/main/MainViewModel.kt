@@ -13,9 +13,6 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     val messages:      MutableLiveData<HashMap<Int, ArrayList<ChatMessage>>> by lazy { MutableLiveData<HashMap<Int, ArrayList<ChatMessage>>>() }
     private val questionResolver = QuestionResolver()
     private val random = Random()
-//    val roomsMessages: MutableLiveData<List<ChatMessage>> by lazy { MutableLiveData<List<ChatMessage>>() }
-//    val whereMessages: MutableLiveData<List<ChatMessage>> by lazy { MutableLiveData<List<ChatMessage>>() }
-//    val otherMessages: MutableLiveData<List<ChatMessage>> by lazy { MutableLiveData<List<ChatMessage>>() }
 
     init {
         messages.value = HashMap()
@@ -32,10 +29,6 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
         val index = random.nextInt(answers.size)
 
         return answers[index]
-    }
-
-    fun HashMap<Int, ArrayList<ChatMessage>>.getByKey(id: Int): ArrayList<ChatMessage> {
-        return ArrayList()
     }
 
     fun MutableLiveData<HashMap<Int, ArrayList<ChatMessage>>>.add(id: Int, item: ChatMessage) {
