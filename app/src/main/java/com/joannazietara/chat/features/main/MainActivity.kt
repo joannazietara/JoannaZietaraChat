@@ -1,11 +1,12 @@
 package com.joannazietara.chat.features.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.View
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
+import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.Observer
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.joannazietara.chat.R
@@ -13,21 +14,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.joannazietara.chat.model.ChatMessage
-import android.content.Intent
-import android.content.ContentResolver
-import android.content.res.AssetManager
-import android.content.res.Resources
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
-import androidx.core.content.FileProvider
 import com.joannazietara.chat.features.ImageShowActivity
-import java.io.InputStream
+import com.joannazietara.chat.model.ChatMessage
 
 
-class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener,
+    MessageAdapterListener {
+
     private lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,34 +32,19 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         initViewModel()
 
         ivChatSend.setOnClickListener {
-//            val am: AssetManager = this.getApplicationContext().getAssets()
-//            val iss: InputStream = am.open("rozmieszczenie_sal.jpg")
-//            val myNewImage: Bitmap = BitmapFactory.decodeStream(iss);
-//
-//            val intent = Intent(Intent.ACTION_VIEW)
-//            intent.setType("image/*")
-////            intent.putExtra(Intent.EXTRA_STREAM, resourceToUri(R.drawable.rozmieszczenie_sal))
-//
-//            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//            val uri: Uri = Uri.parse("content://com.joannazietara.chat.provider/rozmieszczenie_sal.jpg");
-////            intent.putExtra(Intent.EXTRA_STREAM, uri)
-////            FileProvider.getUriForFile(applicationContext, applicationContext.packageName + ".provider", createImageFile());
-//            intent.setDataAndType( uri, "image/*")
-//            startActivity(Intent.createChooser(intent, "Share image using"));
-            startActivity(Intent(this, ImageShowActivity::class.java))
-//            mainViewModel.addUserMessage(etChatMessage.text.toString(), bottomNavigation.selectedItemId)
-//            etChatMessage.setText("")
+            if(!etChatMessage.text.isBlank()) {
+                mainViewModel.addUserMessage(etChatMessage.text.toString(), bottomNavigation.selectedItemId)
+                etChatMessage.setText("")
+            }
         }
-    }
 
-    fun resourceToUri(resID:Int): Uri {
-        val resources: Resources = applicationContext.resources;
-        return Uri.Builder()
-            .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
-            .authority(resources.getResourcePackageName(resID))
-            .appendPath(resources.getResourceTypeName(resID))
-            .appendPath(resources.getResourceEntryName(resID))
-            .build();
+        etChatMessage.setOnEditorActionListener { textView, actionId, keyEvent ->
+            if(actionId == EditorInfo.IME_ACTION_SEND && !etChatMessage.text.isBlank()) {
+                mainViewModel.addUserMessage(etChatMessage.text.toString(), bottomNavigation.selectedItemId)
+                etChatMessage.setText("")
+            }
+            return@setOnEditorActionListener true
+        }
     }
 
     private fun initViewModel() {
@@ -94,12 +72,16 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             ivNoConversationImage.visibility = View.INVISIBLE
         }
 
-        rvChatMessages.adapter = MessagesAdapter(messages)
+        rvChatMessages.adapter = MessagesAdapter(this, messages)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val data: HashMap<Int, ArrayList<ChatMessage>> = mainViewModel.messages.value?:HashMap()
         updateMessages(data[item.itemId] ?:ArrayList())
         return true
+    }
+
+    override fun onImageClicked() {
+        startActivity(Intent(this, ImageShowActivity::class.java))
     }
 }

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.joannazietara.chat.R
 import com.joannazietara.chat.model.ChatMessage
 
-class MessagesAdapter(private val messages: List<ChatMessage>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MessagesAdapter(private val listener: MessageAdapterListener, private val messages: List<ChatMessage>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         return messages[position].author
@@ -23,7 +23,7 @@ class MessagesAdapter(private val messages: List<ChatMessage>): RecyclerView.Ada
         } else {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.message_bot, parent, false)
-            BotMessageViewHolder(view)
+            BotMessageViewHolder(listener, view)
         }
     }
 
@@ -53,7 +53,15 @@ class UserMessageViewHolder(view: View): RecyclerView.ViewHolder(view) {
     var tvMessage: TextView = view.findViewById(R.id.tvChatMessage)
 }
 
-class BotMessageViewHolder(view: View): RecyclerView.ViewHolder(view) {
+class BotMessageViewHolder(private val listener: MessageAdapterListener, view: View): RecyclerView.ViewHolder(view) {
     var tvMessage: TextView = view.findViewById(R.id.tvChatMessage)
     var ivChatImage: ImageView = view.findViewById(R.id.ivChatImage)
+
+    init {
+        ivChatImage.setOnClickListener { listener.onImageClicked() }
+    }
+}
+
+interface MessageAdapterListener {
+    fun onImageClicked()
 }
