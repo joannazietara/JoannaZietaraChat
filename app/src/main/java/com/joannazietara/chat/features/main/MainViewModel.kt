@@ -1,16 +1,18 @@
 package com.joannazietara.chat.features.main
 
-import androidx.lifecycle.LiveData
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.joannazietara.chat.R
 import com.joannazietara.chat.model.ChatMessage
+import com.joannazietara.chat.model.QuestionResolver
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-class MainViewModel: ViewModel() {
+class MainViewModel(application: Application): AndroidViewModel(application) {
     val messages:      MutableLiveData<HashMap<Int, ArrayList<ChatMessage>>> by lazy { MutableLiveData<HashMap<Int, ArrayList<ChatMessage>>>() }
+    private val questionResolver = QuestionResolver()
+    private val random = Random()
 //    val roomsMessages: MutableLiveData<List<ChatMessage>> by lazy { MutableLiveData<List<ChatMessage>>() }
 //    val whereMessages: MutableLiveData<List<ChatMessage>> by lazy { MutableLiveData<List<ChatMessage>>() }
 //    val otherMessages: MutableLiveData<List<ChatMessage>> by lazy { MutableLiveData<List<ChatMessage>>() }
@@ -21,7 +23,15 @@ class MainViewModel: ViewModel() {
 
     fun addUserMessage(text: String, categoryId: Int) {
         messages.add(categoryId, ChatMessage(text, ChatMessage.USER))
-        messages.add(categoryId, ChatMessage(text + text, ChatMessage.BOT))
+        messages.add(categoryId, ChatMessage(getAnswer(categoryId, text), ChatMessage.BOT))
+    }
+
+    private fun getAnswer(categoryId: Int, question: String): String {
+        val answersId = questionResolver.getAnswer(categoryId, question)
+        val answers = getApplication<Application>().resources.getStringArray(answersId)
+        val index = random.nextInt(answers.size)
+
+        return answers[index]
     }
 
     fun HashMap<Int, ArrayList<ChatMessage>>.getByKey(id: Int): ArrayList<ChatMessage> {

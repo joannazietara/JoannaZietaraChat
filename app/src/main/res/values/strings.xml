@@ -6,4 +6,29 @@
 	<string name="main_navigation_where">Gdzie znajdę?</string>
 	<string name="main_navigation_other">Inne</string>
     <string name="navigation_question_hint">Wpisz pytanie...</string>
+
+	<string-array name="rooms_answer_0">
+		<item>Dziekanat znajduje się po lewej stronie podwórka w części administracyjnej, na parterze do końca korytarza i w lewo</item>
+	</string-array>
+
+    <string-array name="rooms_answer_1">
+        <item>Godziny otwarcia dziekanatu możesz sprawdzić na stronie internetowej https://www.wsei.edu.pl/wydzial-ekonomiczno-informatyczny-dziekanat</item>
+        <item>pon, wt, śr, sob 9–14 pt 14–18</item>
+    </string-array>
+
+    <string-array name="rooms_answer_2">
+        <item>Plansza z rozmieszczeniem sal znajduje się w pawilonie europa pomiędzy wejściami oraz na witrynie https://www.wsei.edu.pl/harmonogramy-terminy-zajec-wykladowcow-konsultacji</item>
+    </string-array>
+
+    <string-array name="rooms_answer_3">
+        <item>Tak, Punkt KSERO znajduje się w pawilonie Ameryka wejście B na drugim piętrze godziny działania punktu rozwieszone są przy wejściu do Pawilonu Ameryka</item>
+    </string-array>
+
+    <string-array name="rooms_answer_4">
+        <item>Tak, swoje rzeczy możesz zostawić na portierni( Pawilon Europa) lub w Pawilonie Ameryka u Pana od KSERO</item>
+    </string-array>
+
+    <string-array name="no_answer">
+        <item>Niestety, nie rozumiem co masz na myśli :(</item>
+    </string-array>
 </resources>
