@@ -12,7 +12,7 @@ import kotlin.collections.HashMap
 /**
  * ViewModel do obsługi aktywności MainActivity. Zajmuje się dodawaniem wiadomości do czatu oraz uzyskiwaniem odpowiedzi.
  *
- * @property application    Przechowuje instancję obiektu Aplikacji
+ * @param application:    Przechowuje instancję obiektu Aplikacji
  * @constructor             Tworzy nowy obiekt MainViewModel z pusta lista wiadomosci
  */
 class MainViewModel(application: Application) : AndroidViewModel(application) {
