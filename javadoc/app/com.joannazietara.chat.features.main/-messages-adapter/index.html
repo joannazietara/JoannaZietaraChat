@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MessagesAdapter - app</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">app</a>&nbsp;/&nbsp;<a href="../index.html">com.joannazietara.chat.features.main</a>&nbsp;/&nbsp;<a href="./index.html">MessagesAdapter</a><br/>
+<br/>
+<h1>MessagesAdapter</h1>
+<code><span class="keyword">class </span><span class="identifier">MessagesAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Adapter</span><span class="symbol">&lt;</span><span class="identifier">ViewHolder</span><span class="symbol">&gt;</span></code>
+<p>Adapter dla komponentu RecyclerView pozwalający wyswietlać dymki poszczegolnych wiadomosci</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MessagesAdapter</span><span class="symbol">(</span><span class="identifier" id="com.joannazietara.chat.features.main.MessagesAdapter$<init>(com.joannazietara.chat.features.main.MessageAdapterListener, kotlin.collections.List((com.joannazietara.chat.model.ChatMessage)))/listener">listener</span><span class="symbol">:</span>&nbsp;<a href="../-message-adapter-listener/index.html"><span class="identifier">MessageAdapterListener</span></a><span class="symbol">, </span><span class="identifier" id="com.joannazietara.chat.features.main.MessagesAdapter$<init>(com.joannazietara.chat.features.main.MessageAdapterListener, kotlin.collections.List((com.joannazietara.chat.model.ChatMessage)))/messages">messages</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../../com.joannazietara.chat.model/-chat-message/index.html"><span class="identifier">ChatMessage</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Tworzy adapter z podanymi wiadomosciami</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-item-count.html">getItemCount</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getItemCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Oblicza ilosc wiadomosci</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-item-view-type.html">getItemViewType</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getItemViewType</span><span class="symbol">(</span><span class="identifier" id="com.joannazietara.chat.features.main.MessagesAdapter$getItemViewType(kotlin.Int)/position">position</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Zwraca typ widoku dla danej pozycji w liscie wiadomosci</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="on-bind-view-holder.html">onBindViewHolder</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">onBindViewHolder</span><span class="symbol">(</span><span class="identifier" id="com.joannazietara.chat.features.main.MessagesAdapter$onBindViewHolder(androidx.recyclerview.widget.RecyclerView.ViewHolder, kotlin.Int)/holder">holder</span><span class="symbol">:</span>&nbsp;<span class="identifier">ViewHolder</span><span class="symbol">, </span><span class="identifier" id="com.joannazietara.chat.features.main.MessagesAdapter$onBindViewHolder(androidx.recyclerview.widget.RecyclerView.ViewHolder, kotlin.Int)/position">position</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Przydziela informacje do widoku</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="on-create-view-holder.html">onCreateViewHolder</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">onCreateViewHolder</span><span class="symbol">(</span><span class="identifier" id="com.joannazietara.chat.features.main.MessagesAdapter$onCreateViewHolder(android.view.ViewGroup, kotlin.Int)/parent">parent</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/ViewGroup.html"><span class="identifier">ViewGroup</span></a><span class="symbol">, </span><span class="identifier" id="com.joannazietara.chat.features.main.MessagesAdapter$onCreateViewHolder(android.view.ViewGroup, kotlin.Int)/viewType">viewType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ViewHolder</span></code>
+<p>Tworzy obiekt ViewHolder dla odpowiedniego typu widoku</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,8 @@
+$dokka.format:html
+$dokka.linkExtension:html
+
+com.joannazietara.chat.features
+com.joannazietara.chat.features.main
+com.joannazietara.chat.features.splash
+com.joannazietara.chat.model
+com.joannazietara.chat.model.answers

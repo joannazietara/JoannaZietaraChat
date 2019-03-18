@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MainViewModel - app</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">app</a>&nbsp;/&nbsp;<a href="../index.html">com.joannazietara.chat.features.main</a>&nbsp;/&nbsp;<a href="./index.html">MainViewModel</a><br/>
+<br/>
+<h1>MainViewModel</h1>
+<code><span class="keyword">class </span><span class="identifier">MainViewModel</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AndroidViewModel</span></code>
+<p>ViewModel do obsługi aktywności MainActivity. Zajmuje się dodawaniem wiadomości do czatu oraz uzyskiwaniem odpowiedzi.</p>
+<h3>Parameters</h3>
+<p><a name="application"></a>
+<code>application</code> - :    Przechowuje instancję obiektu Aplikacji</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MainViewModel</span><span class="symbol">(</span><span class="identifier" id="com.joannazietara.chat.features.main.MainViewModel$<init>(android.app.Application)/application">application</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/app/Application.html"><span class="identifier">Application</span></a><span class="symbol">)</span></code>
+<p>Tworzy nowy obiekt MainViewModel z pusta lista wiadomosci</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="messages.html">messages</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">messages</span><span class="symbol">: </span><span class="identifier">MutableLiveData</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-map/index.html"><span class="identifier">HashMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/index.html"><span class="identifier">ArrayList</span></a><span class="symbol">&lt;</span><a href="../../com.joannazietara.chat.model/-chat-message/index.html"><span class="identifier">ChatMessage</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Obiekt przechowujacy listę wiadomości podzieloną na konkretne kategorie (sale, gdzie znajde, inne)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-user-message.html">addUserMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">addUserMessage</span><span class="symbol">(</span><span class="identifier" id="com.joannazietara.chat.features.main.MainViewModel$addUserMessage(kotlin.String, kotlin.Int)/text">text</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.joannazietara.chat.features.main.MainViewModel$addUserMessage(kotlin.String, kotlin.Int)/categoryId">categoryId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Dodaje pytanie uzytkownika do listy wiadomosci do odpowiedniej kategorii jak i dodaje do listy wiadomosci
+odpowiedz uzyskana od chat-bota</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
