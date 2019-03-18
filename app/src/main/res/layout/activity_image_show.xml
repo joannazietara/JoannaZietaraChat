@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black"
-    tools:context=".features.ImageShowActivity">
+    tools:context=".features.ImageShowActivity"
+    tools:ignore="Overdraw">
     <com.github.piasy.biv.view.BigImageView
         android:id="@+id/mBigImage"
         android:layout_width="match_parent"

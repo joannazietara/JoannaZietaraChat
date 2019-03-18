@@ -11,8 +11,8 @@ class QuestionResolver {
         val questionWords = unifyText(question).split(" ")
         val answersCat = getProperCategory(categoryId)
         for (key: Int in answersCat.getKeywords().keys) {
-            for(keywords: List<String> in answersCat.getKeywords()[key]!!) {
-                if(questionWords.containsAll(keywords))
+            for (keywords: List<String> in answersCat.getKeywords()[key]!!) {
+                if (questionWords.containsAll(keywords))
                     return answersCat.getAnswers()[key]!!
             }
         }
@@ -50,11 +50,12 @@ class QuestionResolver {
         return sbText.toString()
     }
 
-    val characters = hashMapOf<Char, Char>(
+    private val characters = hashMapOf(
         'ą' to 'a', 'ę' to 'e', 'ś' to 's', 'ó' to 'o', 'ł' to 'l', 'ź' to 'z', 'ż' to 'z', 'ć' to 'c', 'ń' to 'n',
         '.' to ' ', ',' to ' ', '?' to ' ', '"' to ' ', '(' to ' ', ')' to ' ', '/' to ' ', '\\' to ' ', '\'' to ' ',
         ':' to ' ', ';' to ' ', '-' to ' ', '\ufeff' to ' ', '\ufffe' to ' ', '!' to ' ', '@' to ' ', '#' to ' ',
         '$' to ' ', '%' to ' ', '^' to ' ', '*' to ' ', '_' to ' ', '+' to ' ', '=' to ' ', '{' to ' ', '}' to ' ',
         '[' to ' ', ']' to ' ', '|' to ' ', '<' to ' ', '>' to ' ', '1' to ' ', '2' to ' ', '3' to ' ', '4' to ' ',
-        '5' to ' ', '6' to ' ', '7' to ' ', '8' to ' ', '9' to ' ', '0' to ' ')
+        '5' to ' ', '6' to ' ', '7' to ' ', '8' to ' ', '9' to ' ', '0' to ' '
+    )
 }

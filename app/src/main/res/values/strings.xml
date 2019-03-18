@@ -5,7 +5,8 @@
     <string name="main_navigation_rooms">Sale</string>
     <string name="main_navigation_where">Gdzie znajdę?</string>
     <string name="main_navigation_other">Inne</string>
-    <string name="navigation_question_hint">Wpisz pytanie...</string>
+    <string name="navigation_question_hint">Wpisz pytanie…</string>
+    <string name="main_no_questions">Jeszcze nie ma żadnych pytań ani odpowiedzi. Zadaj pytanko poniżej, postaram się odpowiedzieć najlepiej jak umiem!</string>
 
 
     <string-array name="no_answer">

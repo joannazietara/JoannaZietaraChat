@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string-array name="other_answer_0">
         <item>Można parkować samochodem na podwórku, jednak pamiętaj, że wykładowcy mają pierwszeństwo – jeżeli dużo wykładowców ma w danym dniu zajęcia może nie być dla Ciebie miejsca.</item>
     </string-array>
 
     <string-array name="other_answer_1">
-        <item>Uczelnia otwarta jest 7 dni w tygodniu wykluczając święta przeważnie od godzin porannych ok. 7 do ok. 20</item>
+        <item tools:ignore="Typos">Uczelnia otwarta jest 7 dni w tygodniu wykluczając święta przeważnie od godzin porannych ok. 7 do ok. 20</item>
     </string-array>
 
     <string-array name="other_answer_2">

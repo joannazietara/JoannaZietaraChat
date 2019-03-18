@@ -31,14 +31,14 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         initViewModel()
 
         ivChatSend.setOnClickListener {
-            if(!etChatMessage.text.isBlank()) {
+            if (!etChatMessage.text.isBlank()) {
                 mainViewModel.addUserMessage(etChatMessage.text.toString(), bottomNavigation.selectedItemId)
                 etChatMessage.setText("")
             }
         }
 
         etChatMessage.setOnEditorActionListener { textView, actionId, keyEvent ->
-            if(actionId == EditorInfo.IME_ACTION_SEND && !etChatMessage.text.isBlank()) {
+            if (actionId == EditorInfo.IME_ACTION_SEND && !etChatMessage.text.isBlank()) {
                 mainViewModel.addUserMessage(etChatMessage.text.toString(), bottomNavigation.selectedItemId)
                 etChatMessage.setText("")
             }
@@ -49,9 +49,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     private fun initViewModel() {
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
-        mainViewModel.messages.observe(this, Observer<HashMap<Int, ArrayList<ChatMessage>>> {
-                messages ->
-            updateMessages(messages[bottomNavigation.selectedItemId]?: ArrayList())
+        mainViewModel.messages.observe(this, Observer<HashMap<Int, ArrayList<ChatMessage>>> { messages ->
+            updateMessages(messages[bottomNavigation.selectedItemId] ?: ArrayList())
         })
     }
 
@@ -63,7 +62,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     }
 
     private fun updateMessages(messages: ArrayList<ChatMessage>) {
-        if(messages.isEmpty()) {
+        if (messages.isEmpty()) {
             tvNoConversationCaption.visibility = View.VISIBLE
             ivNoConversationImage.visibility = View.VISIBLE
         } else {
@@ -75,8 +74,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        val data: HashMap<Int, ArrayList<ChatMessage>> = mainViewModel.messages.value?:HashMap()
-        updateMessages(data[item.itemId] ?:ArrayList())
+        val data: HashMap<Int, ArrayList<ChatMessage>> = mainViewModel.messages.value ?: HashMap()
+        updateMessages(data[item.itemId] ?: ArrayList())
         return true
     }
 

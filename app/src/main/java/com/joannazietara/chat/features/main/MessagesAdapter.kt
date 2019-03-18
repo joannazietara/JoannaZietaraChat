@@ -9,14 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.joannazietara.chat.R
 import com.joannazietara.chat.model.ChatMessage
 
-class MessagesAdapter(private val listener: MessageAdapterListener, private val messages: List<ChatMessage>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MessagesAdapter(private val listener: MessageAdapterListener, private val messages: List<ChatMessage>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         return messages[position].author
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if(viewType == ChatMessage.USER) {
+        return if (viewType == ChatMessage.USER) {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.message_user, parent, false)
             UserMessageViewHolder(view)
@@ -32,7 +33,7 @@ class MessagesAdapter(private val listener: MessageAdapterListener, private val 
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if(getItemViewType(position) == ChatMessage.USER) {
+        if (getItemViewType(position) == ChatMessage.USER) {
             val viewHolder: UserMessageViewHolder = holder as UserMessageViewHolder
             viewHolder.tvMessage.text = messages[position].message
         } else {
@@ -49,11 +50,11 @@ class MessagesAdapter(private val listener: MessageAdapterListener, private val 
     }
 }
 
-class UserMessageViewHolder(view: View): RecyclerView.ViewHolder(view) {
+class UserMessageViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     var tvMessage: TextView = view.findViewById(R.id.tvChatMessage)
 }
 
-class BotMessageViewHolder(private val listener: MessageAdapterListener, view: View): RecyclerView.ViewHolder(view) {
+class BotMessageViewHolder(private val listener: MessageAdapterListener, view: View) : RecyclerView.ViewHolder(view) {
     var tvMessage: TextView = view.findViewById(R.id.tvChatMessage)
     var ivChatImage: ImageView = view.findViewById(R.id.ivChatImage)
 

@@ -9,7 +9,7 @@ import com.github.piasy.biv.loader.glide.GlideImageLoader
 import com.joannazietara.chat.R
 import com.joannazietara.chat.features.main.MainActivity
 
-class SplashScreenActivity: AppCompatActivity() {
+class SplashScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
