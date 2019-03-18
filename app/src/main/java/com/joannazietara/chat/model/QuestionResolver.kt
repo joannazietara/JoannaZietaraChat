@@ -1,27 +1,39 @@
 package com.joannazietara.chat.model
 
 import com.joannazietara.chat.R
-import java.util.*
+import com.joannazietara.chat.model.answers.AnswersCategory
+import com.joannazietara.chat.model.answers.OtherAnswersCategory
+import com.joannazietara.chat.model.answers.RoomsAnswersCategory
+import com.joannazietara.chat.model.answers.WhereAnswersCategory
 
 class QuestionResolver {
     fun getAnswer(categoryId: Int, question: String): Int {
-        var splitedQuestion = unifyText(question).split(" ")
-        for (key: Int in RoomsAnswers.keywords.keys) {
-            for(keywords: List<String> in RoomsAnswers.keywords[key]!!) {
-                if(splitedQuestion.containsAll(keywords))
-                    return RoomsAnswers.answers[key]!!
+        val questionWords = unifyText(question).split(" ")
+        val answersCat = getProperCategory(categoryId)
+        for (key: Int in answersCat.getKeywords().keys) {
+            for(keywords: List<String> in answersCat.getKeywords()[key]!!) {
+                if(questionWords.containsAll(keywords))
+                    return answersCat.getAnswers()[key]!!
             }
         }
 
         return R.array.no_answer
     }
 
-    private fun unifyText(text: String): String {
-        var text = text.toLowerCase()
-        text = replaceSpecialCharacters(text)
-        text = text.replace(" +".toRegex(), " ").trim { it <= ' ' }
+    private fun getProperCategory(categoryId: Int): AnswersCategory {
+        return when (categoryId) {
+            R.id.navigation_rooms -> RoomsAnswersCategory()
+            R.id.navigation_where -> WhereAnswersCategory()
+            else -> OtherAnswersCategory()
+        }
+    }
 
-        return text
+    private fun unifyText(text: String): String {
+        var question = text.toLowerCase()
+        question = replaceSpecialCharacters(question)
+        question = question.replace(" +".toRegex(), " ").trim { it <= ' ' }
+
+        return question
     }
 
     private fun replaceSpecialCharacters(text: String): String {

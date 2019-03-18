@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="where_answer_0">
+        <item>Plan zajęć znajduje się na stronie http://harmonogramy.wsei.edu.pl oraz na portierni</item>
+    </string-array>
+
+    <string-array name="where_answer_1">
+        <item>Sylabusy przedmiotów są w posiadaniu P. Malik.</item>
+    </string-array>
+
+    <string-array name="where_answer_2">
+        <item>Informacje dotyczące organizacji roku akademickiego znajdziesz tutaj: https://www.wsei.edu.pl/organizacja-roku-akademickiego</item>
+    </string-array>
+
+    <string-array name="where_answer_3">
+        <item>Na uczelni znajdują się 3 automaty z napojami</item>
+    </string-array>
+
+    <string-array name="where_answer_4">
+        <item>Na uczelni znajduje się GROTA możesz tam kupić obiad, kanapki, napoje</item>
+    </string-array>
+</resources>
