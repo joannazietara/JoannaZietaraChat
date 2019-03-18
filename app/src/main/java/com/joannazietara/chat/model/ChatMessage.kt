@@ -9,7 +9,13 @@ package com.joannazietara.chat.model
  */
 class ChatMessage(val message: String, val author: Int) {
     companion object {
+        /**
+         * Wiadomość od użytkownika
+         */
         const val USER = 1
+        /**
+         * Wiadomość od czat-bota
+         */
         const val BOT = 2
     }
 }

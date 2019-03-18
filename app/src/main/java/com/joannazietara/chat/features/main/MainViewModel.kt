@@ -17,7 +17,7 @@ import kotlin.collections.HashMap
  */
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     /**
-     *  Obiekt przechowujacy listę wiadomości podzieloną na konkretne kategorie [sale, gdzie znajde, inne]
+     *  Obiekt przechowujacy listę wiadomości podzieloną na konkretne kategorie (sale, gdzie znajde, inne)
      */
     val messages: MutableLiveData<HashMap<Int, ArrayList<ChatMessage>>> by lazy { MutableLiveData<HashMap<Int, ArrayList<ChatMessage>>>() }
     /**

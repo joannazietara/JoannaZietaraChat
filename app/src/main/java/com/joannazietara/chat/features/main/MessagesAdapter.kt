@@ -119,5 +119,8 @@ class BotMessageViewHolder(private val listener: MessageAdapterListener, view: V
  * Interfejs obslugujacy klikniecie w obrazek w wiadomosci
  */
 interface MessageAdapterListener {
+    /**
+     * Obsługuje klikniecie w obrazie w wiadomosci
+     */
     fun onImageClicked()
 }
