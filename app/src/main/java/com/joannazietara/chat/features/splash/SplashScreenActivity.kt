@@ -9,14 +9,22 @@ import com.github.piasy.biv.loader.glide.GlideImageLoader
 import com.joannazietara.chat.R
 import com.joannazietara.chat.features.main.MainActivity
 
+/**
+ * Pierwsza aktywność, pozwalająca zainicjalizować aplikację
+ */
 class SplashScreenActivity : AppCompatActivity() {
-
+    /**
+     * Rozpoczyna tworzenie aktywnosci
+     *
+     * @param savedInstanceState    zachowuje zapisany stan aktywnosci
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        BigImageViewer.initialize(GlideImageLoader.with(applicationContext))
+        BigImageViewer.initialize(GlideImageLoader.with(applicationContext))    // inicjalizacja biblioteki obslugującej ładowanie obrazu
 
+        // wyświetlenie głównej aktywności po 3 sekundach
         Handler().postDelayed({
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

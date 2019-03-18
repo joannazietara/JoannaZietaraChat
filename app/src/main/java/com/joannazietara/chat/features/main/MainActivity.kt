@@ -16,12 +16,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.joannazietara.chat.features.ImageShowActivity
 import com.joannazietara.chat.model.ChatMessage
 
-
+/**
+ * Główna aktywność w której znajduje się okno czatu
+ */
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener,
     MessageAdapterListener {
 
+    /**
+     *  Przechowuje instację do klasy MainViewModel
+     */
     private lateinit var mainViewModel: MainViewModel
 
+    /**
+     * Rozpoczyna tworzenie aktywnosci
+     *
+     * @param savedInstanceState    zachowuje zapisany stan aktywnosci
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,14 +41,15 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         initViewModel()
 
         ivChatSend.setOnClickListener {
-            if (!etChatMessage.text.isBlank()) {
-                mainViewModel.addUserMessage(etChatMessage.text.toString(), bottomNavigation.selectedItemId)
-                etChatMessage.setText("")
+            if (!etChatMessage.text.isBlank()) {    // obsluga pytania tylko jesli pole pytania nie jest puste
+                mainViewModel.addUserMessage(etChatMessage.text.toString(), bottomNavigation.selectedItemId)    // dodanie wiadomosci
+                etChatMessage.setText("")   // wyczyszczenie pola wiadomosci
             }
         }
 
+        // obsluga przycisku 'wyslij' na klawiaturze
         etChatMessage.setOnEditorActionListener { textView, actionId, keyEvent ->
-            if (actionId == EditorInfo.IME_ACTION_SEND && !etChatMessage.text.isBlank()) {
+            if (actionId == EditorInfo.IME_ACTION_SEND && !etChatMessage.text.isBlank()) {  // jesli przycisk nacisniety i pole pytania nie jest puste
                 mainViewModel.addUserMessage(etChatMessage.text.toString(), bottomNavigation.selectedItemId)
                 etChatMessage.setText("")
             }
@@ -46,6 +57,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         }
     }
 
+    /**
+     *  Inicjalizacja klasy ViewModel i obserwowanie zmian w zmiennej messages
+     */
     private fun initViewModel() {
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
@@ -54,6 +68,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         })
     }
 
+    /**
+     * Inicjalizacja komponenty RecyclerView, by używał domyślnych animacji, liniowego menedżera oraz dodawał kolejne obiekty od dołu
+     */
     private fun initRecyclerView() {
         val mLayoutManager = LinearLayoutManager(applicationContext)
         mLayoutManager.stackFromEnd = true
@@ -61,6 +78,13 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         rvChatMessages.itemAnimator = DefaultItemAnimator()
     }
 
+    /**
+     * Aktualizuje listę wiadomosci w oknie czatu. Jeśli nie ma żadnych wiadomości, pokazuje informacje,
+     * że nie zadano jeszcze żadnych pytań.
+     * Tworzy również adapter dla komponentu RecyclerView z przekazanymi wiadomościami
+     *
+     * @param messages  lista wiadomosci czatu do zaktualizowania
+     */
     private fun updateMessages(messages: ArrayList<ChatMessage>) {
         if (messages.isEmpty()) {
             tvNoConversationCaption.visibility = View.VISIBLE
@@ -73,12 +97,21 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         rvChatMessages.adapter = MessagesAdapter(this, messages)
     }
 
+    /**
+     * Obsługuje kliknięcia w elementy nawigacji znajdujące się na dole aktywności.
+     * Pobiera wiadoomości z danej kategorii z ViewModel i wyświetla na czacie
+     *
+     * @param item  kliknięty element
+     */
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val data: HashMap<Int, ArrayList<ChatMessage>> = mainViewModel.messages.value ?: HashMap()
         updateMessages(data[item.itemId] ?: ArrayList())
         return true
     }
 
+    /**
+     * Obsługuje kliknięcie w obrazek przesłany przez chat-bota. Otwiera aktywność wyświetlająca obraz
+     */
     override fun onImageClicked() {
         startActivity(Intent(this, ImageShowActivity::class.java))
     }
